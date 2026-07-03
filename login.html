@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<title>เข้าสู่ระบบ - ระบบอนุมัติเอกสาร</title>
+<link rel="stylesheet" href="css/style.css" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>ระบบอนุมัติเอกสาร</h1>
+    <div class="tabs">
+      <button id="tabSignin" class="active">เข้าสู่ระบบ</button>
+      <button id="tabSignup">สมัครสมาชิก</button>
+    </div>
+
+    <form id="signinForm">
+      <label>อีเมล</label>
+      <input type="email" id="signinEmail" required />
+      <label>รหัสผ่าน</label>
+      <input type="password" id="signinPassword" required />
+      <button type="submit" class="btn-primary">เข้าสู่ระบบ</button>
+    </form>
+
+    <form id="signupForm" class="hidden">
+      <label>ชื่อ-นามสกุล</label>
+      <input type="text" id="signupName" required />
+      <label>ตำแหน่ง (Role)</label>
+      <select id="signupRole" required>
+        <option value="sales">Sales</option>
+        <option value="supervisor">Supervisor</option>
+        <option value="manager">Manager</option>
+      </select>
+      <label>อีเมล</label>
+      <input type="email" id="signupEmail" required />
+      <label>รหัสผ่าน (อย่างน้อย 6 ตัวอักษร)</label>
+      <input type="password" id="signupPassword" required minlength="6" />
+      <button type="submit" class="btn-primary">สมัครสมาชิก</button>
+    </form>
+
+    <p id="feedback"></p>
+  </div>
+
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

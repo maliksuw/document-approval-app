@@ -1,0 +1,62 @@
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, "Segoe UI", Tahoma, sans-serif;
+  background: #f4f5f7;
+  margin: 0;
+  color: #1f2328;
+}
+.container {
+  max-width: 480px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.wide { max-width: 900px; }
+h1 { font-size: 22px; margin-top: 0; }
+label { display: block; margin: 14px 0 4px; font-size: 14px; font-weight: 600; }
+input, select, textarea {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+textarea { resize: vertical; min-height: 70px; }
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+.btn-primary { background: #2563eb; color: #fff; width: 100%; }
+.btn-primary:hover { background: #1d4ed8; }
+.btn-approve { background: #16a34a; color: #fff; margin-right: 8px; }
+.btn-reject { background: #dc2626; color: #fff; }
+.btn-link { background: none; color: #2563eb; padding: 0; margin: 0; font-weight: 500; }
+.tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.tabs button { flex: 1; background: #eef0f3; color: #444; margin: 0; }
+.tabs button.active { background: #2563eb; color: #fff; }
+.error { color: #dc2626; font-size: 13px; margin-top: 10px; }
+.msg { color: #16a34a; font-size: 13px; margin-top: 10px; }
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 900px; margin: 24px auto 0; padding: 0 8px;
+}
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #eee; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 600;
+}
+.badge-pending_supervisor { background: #fef3c7; color: #92400e; }
+.badge-pending_manager { background: #dbeafe; color: #1e40af; }
+.badge-approved { background: #dcfce7; color: #166534; }
+.badge-rejected { background: #fee2e2; color: #991b1b; }
+.card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-top: 20px; }
+.hidden { display: none; }
+.actions-cell { display: flex; gap: 8px; align-items: center; }

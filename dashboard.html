@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<title>แดชบอร์ด - ระบบอนุมัติเอกสาร</title>
+<link rel="stylesheet" href="css/style.css" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="topbar">
+    <div>
+      <strong id="userName">...</strong>
+      <span id="userRole" class="badge" style="background:#eef0f3;color:#333;margin-left:8px;"></span>
+    </div>
+    <button id="logoutBtn" class="btn-link">ออกจากระบบ</button>
+  </div>
+
+  <div class="container wide">
+    <div id="createSection" class="card hidden">
+      <h1>สร้างเอกสารใหม่ (ยื่นขออนุมัติ)</h1>
+      <form id="createForm">
+        <label>ชื่อเอกสาร</label>
+        <input type="text" id="docTitle" required />
+        <label>รายละเอียด</label>
+        <textarea id="docDescription"></textarea>
+        <label>แนบไฟล์ (ถ้ามี)</label>
+        <input type="file" id="docFile" />
+        <button type="submit" class="btn-primary">ส่งขออนุมัติ (ไปที่ Supervisor)</button>
+      </form>
+      <p id="createFeedback"></p>
+    </div>
+
+    <div id="pendingSection" class="card hidden">
+      <h1 id="pendingTitle">รายการรอฉันอนุมัติ</h1>
+      <table id="pendingTable">
+        <thead>
+          <tr><th>ชื่อเอกสาร</th><th>รายละเอียด</th><th>ผู้ยื่น</th><th>วันที่</th><th>การดำเนินการ</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p id="pendingEmpty" class="hidden">ไม่มีรายการรออนุมัติ</p>
+    </div>
+
+    <div class="card">
+      <h1>เอกสารทั้งหมด</h1>
+      <table id="allTable">
+        <thead>
+          <tr><th>ชื่อเอกสาร</th><th>ผู้ยื่น</th><th>สถานะ</th><th>อัปเดตล่าสุด</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
