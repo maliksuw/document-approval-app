@@ -1,0 +1,19 @@
+name: Keep Supabase Alive
+
+on:
+  schedule:
+    # Every Monday and Thursday at 03:00 UTC - well within Supabase's
+    # 7-day inactivity pause window, with margin for scheduling delays.
+    - cron: "0 3 * * 1,4"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST API
+        run: |
+          status=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://niouqddvxpaoztwyetkr.supabase.co/rest/v1/" \
+            -H "apikey: sb_publishable_4YUqveKhfWgf1J4WqIKu1g_myrvOeDI")
+          echo "Supabase responded with HTTP $status"
