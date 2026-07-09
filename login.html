@@ -20,6 +20,14 @@
       <label>รหัสผ่าน</label>
       <input type="password" id="signinPassword" required />
       <button type="submit" class="btn-primary">เข้าสู่ระบบ</button>
+      <button type="button" id="forgotPasswordLink" class="btn-link" style="margin-top:10px;">ลืมรหัสผ่าน?</button>
+    </form>
+
+    <form id="forgotForm" class="hidden">
+      <label>กรอกอีเมลที่ใช้สมัคร เพื่อรับลิงก์ตั้งรหัสผ่านใหม่</label>
+      <input type="email" id="forgotEmail" required />
+      <button type="submit" class="btn-primary">ส่งลิงก์รีเซ็ตรหัสผ่าน</button>
+      <button type="button" id="backToSigninLink" class="btn-link" style="margin-top:10px;">กลับไปเข้าสู่ระบบ</button>
     </form>
 
     <form id="signupForm" class="hidden">

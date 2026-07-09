@@ -2,17 +2,22 @@ const tabSignin = document.getElementById("tabSignin");
 const tabSignup = document.getElementById("tabSignup");
 const signinForm = document.getElementById("signinForm");
 const signupForm = document.getElementById("signupForm");
+const forgotForm = document.getElementById("forgotForm");
+const forgotPasswordLink = document.getElementById("forgotPasswordLink");
+const backToSigninLink = document.getElementById("backToSigninLink");
 const feedback = document.getElementById("feedback");
 
 tabSignin.addEventListener("click", () => switchTab("signin"));
 tabSignup.addEventListener("click", () => switchTab("signup"));
+forgotPasswordLink.addEventListener("click", () => switchTab("forgot"));
+backToSigninLink.addEventListener("click", () => switchTab("signin"));
 
 function switchTab(which) {
-  const isSignin = which === "signin";
-  tabSignin.classList.toggle("active", isSignin);
-  tabSignup.classList.toggle("active", !isSignin);
-  signinForm.classList.toggle("hidden", !isSignin);
-  signupForm.classList.toggle("hidden", isSignin);
+  tabSignin.classList.toggle("active", which === "signin");
+  tabSignup.classList.toggle("active", which === "signup");
+  signinForm.classList.toggle("hidden", which !== "signin");
+  signupForm.classList.toggle("hidden", which !== "signup");
+  forgotForm.classList.toggle("hidden", which !== "forgot");
   feedback.textContent = "";
   feedback.className = "";
 }
@@ -59,6 +64,23 @@ signupForm.addEventListener("submit", async (e) => {
     switchTab("signin");
     showFeedback("สมัครสำเร็จ กรุณายืนยันอีเมลก่อนเข้าสู่ระบบ (ถ้าเปิดใช้ email confirmation)", false);
   }
+});
+
+forgotForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("forgotEmail").value.trim();
+
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + "/reset-password.html",
+  });
+
+  if (error) {
+    showFeedback(error.message, true);
+    return;
+  }
+
+  showFeedback("ถ้าอีเมลนี้มีอยู่ในระบบ เราได้ส่งลิงก์ตั้งรหัสผ่านใหม่ไปให้แล้ว กรุณาตรวจสอบกล่องข้อความ", false);
+  e.target.reset();
 });
 
 // if already logged in, skip straight to dashboard
